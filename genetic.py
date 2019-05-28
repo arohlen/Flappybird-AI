@@ -39,7 +39,7 @@ def mutation(newBirds):
 		if rand >= chance:
 			bird.b2 = np.random.randn(1,1)*0.01
 
-	
+
 def crossover(birds,generation):
 
 	birdTopY = 330
@@ -59,7 +59,7 @@ def crossover(birds,generation):
 	newBirds += birds
 
 	mutation(newBirds)
-	
+
 	for bird in birds:
 		totalFitness += bird.fitness
 
@@ -101,4 +101,3 @@ def crossover(birds,generation):
 		newBirds.append(Bird(input,w1,w2,b1,b2,birdLeftX,birdTopY,velocity,0))
 
 	return newBirds
-		

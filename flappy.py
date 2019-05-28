@@ -25,11 +25,9 @@ flappy_model = pygame.image.load('bird-midflap.png')
 gen = 0
 maxScore = 0
 
-
 def fitness(dist, birdMiddle, middle):
     x = (dist - abs(birdMiddle - middle))
     return int(x)
-
 
 #collision detection
 def collision(birdRightX,birdLeftX,birdBottomY,birdTopY,pipes,i,upperPipeLength):
@@ -102,8 +100,6 @@ def main(birds):
         screen.blit(floor, (336, 500))
         screen.blit(floor, (336*2, 500))
 
-        #pygame.draw.rect(screen, (0,0,0), (birdLeftX,birdTopY,bird_width,bird_height), 2)
-
         # spawning pipes
         if pipes[0][0][0] < -52:
             del pipes[0]
@@ -139,7 +135,7 @@ def main(birds):
                 if bird.velocity > 10:
                     bird.velocity = 10
 
-                if x > 0.5: #and (dist/10)%3 == 0:
+                if x > 0.5:
                     bird.velocity -= upForce
                 col = collision(bird.x+bird_width,bird.x,bird.y+bird_height,bird.y,pipes,1,upperPipeLength)
                 if col:
@@ -169,7 +165,7 @@ def main(birds):
                 if bird.velocity > 10:
                     bird.velocity = 10
 
-                if x > 0.5:# and (dist/10)%3 == 0:
+                if x > 0.5:
                     bird.velocity -= upForce
                 col = collision(bird.x+bird_width,bird.x,bird.y+bird_height,bird.y,pipes,0,upperPipeLength)
                 if col:
@@ -220,8 +216,8 @@ def main(birds):
 
 
 if __name__ == '__main__':
+
     # start position of bird
-    # bird hitbox
     birdTopY = 330
     birdLeftX = 250
     velocity = 0
@@ -239,7 +235,4 @@ if __name__ == '__main__':
         b2 = np.random.randn(1,1) * 0.01
         birds.append(Bird(input_for_bird, w1, w2, b1 , b2,birdLeftX,birdTopY,velocity,0))
 
-    #while True:
     main(birds)
-
-# TODO: fix start screen, add pause
